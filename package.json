@@ -12,7 +12,7 @@
         "brackets": ">=1.4.0"
     },
     "contributors": [
-        {"name": "Patrick Oladimeji", "email": "thehogfather@dustygem.co.uk", "url": "https://github.com/thehogfather"},
+        {"name": "Patrick Oladimeji", "email": "thehogfather@dustygem.co.uk", "url": "https://github.com/thehogfather"}
     ],
     "license": "MIT"
 }
