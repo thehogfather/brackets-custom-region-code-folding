@@ -28,12 +28,15 @@
 /*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 */
 /*global define, require, brackets*/
 
+//start Requirejs config region
 require.config({
     paths: {
         "i18n" : "lib/i18n"
     },
     locale: brackets.getLocale()
 });
+//close
+
 
 define(function (require, exports, module) {
     "use strict";
@@ -46,7 +49,6 @@ define(function (require, exports, module) {
         COLLAPSE_CUSTOM_REGIONS = "codefolding.collapse.customregions";
 
     var regionFold              = require("region-fold");
-
 
     /**
         Collapses all custom regions defined in the current editor

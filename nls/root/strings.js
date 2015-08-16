@@ -27,5 +27,9 @@
 /*global define */
 
 define({
-    "COLLAPSE_CUSTOM_REGIONS"       : "Collapse Custom Regions"
+    "COLLAPSE_CUSTOM_REGIONS"       : "Collapse Custom Regions",
+    "START_REGION_WORD"             : "Start region word",
+    "START_REGION_WORD_DESC"        : "Word token to use to designate the beginning of a custom foldable region.",
+    "END_REGION_WORD"               : "End region word",
+    "END_REGION_WORD_DESC"          : "Word token to use to designate the end of a custom foldable region."
 });

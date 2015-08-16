@@ -7,11 +7,15 @@
 define(function (require, exports, module) {
     "use strict";
     var CodeMirror = brackets.getModule("thirdparty/CodeMirror2/lib/codemirror"),
-        startRegion = /\W+region/i,
-        endRegion = /\W+endregion/i,
+        Preferences = require("Preferences"),
         space = /\s/;
 
     function regionFold(cm, start) {
+        var startWord = Preferences.get("startRegionWord"),
+            endWord = Preferences.get("endRegionWord"),
+            startRegionRegex = new RegExp("\\W+" + startWord, ["i"]),
+            endRegionRegex = new RegExp("\\W+" + endWord, ["i"]);
+
         var line = start.line, i, j;
         var startCh = 0, stack = [], token;
         var lastLine = cm.lastLine(), end, endCh, nextOpen, nextClose;
@@ -30,8 +34,10 @@ define(function (require, exports, module) {
                     token = cm.getTokenAt(CodeMirror.Pos(i, j + 1));
                     if (token) {
                         if (token.string.length && token.type === "comment") {
-                            nextOpen = token.string.toLowerCase().match(startRegion) ? token.end : -1;
-                            nextClose = token.string.toLowerCase().match(endRegion) ? token.start : -1;
+                            nextOpen = token.string.toLowerCase().match(startRegionRegex) ?
+                                    (token.start + token.string.toLowerCase().indexOf(startWord)) : -1;
+                            nextClose = token.string.toLowerCase().match(endRegionRegex) ? token.end : -1;
+
                             if (nextOpen  > -1) {
                                 stack.push(nextOpen);
                             }
@@ -39,6 +45,7 @@ define(function (require, exports, module) {
                                 if (stack.length === 1) {
                                     endCh = nextClose;
                                     end = i;
+
                                     return {from: CodeMirror.Pos(line, stack[0]),
                                             to: CodeMirror.Pos(end, endCh)};
                                 }

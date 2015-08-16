@@ -1,7 +1,7 @@
 {
     "title": "Custom Region Code Folding",
     "name": "brackets-custom-region-code-folding",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "author": "Patrick Oladimeji <patrick@dustygem.co.uk>",
     "description": "Brackets extension that provides the ability to define custom collapsible code regions in the editor",
     "homepage": "https://github.com/thehogfather/brackets-custom-region-code-folding",
